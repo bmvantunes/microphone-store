@@ -13,6 +13,9 @@ export interface IndexProps {
   microphones: Microphone[];
 }
 
+const isProd = process.env.NODE_ENV === 'production';
+const imagePrefix = isProd ? 'https://bmvantunes.github.io/microphone-store' : '';
+
 export default function Index({ microphones }: IndexProps) {
   return (
     <Grid container spacing={3}>
@@ -26,7 +29,7 @@ export default function Index({ microphones }: IndexProps) {
                     component="img"
                     alt={microphone.brand + ' ' + microphone.model}
                     height="300"
-                    image={microphone.imageUrl}
+                    image={imagePrefix + microphone.imageUrl}
                     title={microphone.brand + ' ' + microphone.model}
                   />
                   <CardContent>
